@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" type="text/css" href="homestyle.css  ">
+
+</head>
+<body>
+   
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <% if (!user) { %>
+                <li><a href="/login" class="login-link">Login </a></li>
+            <% } %>
+            <% if (!user) { %>
+                <li><a href="/signup" class="signup-link">Sign Up</a></li>
+            <% } %>
+            <li><a href="/contact" class="contact-link">Contact Us</a></li>
+            <% if (user) { %>
+                <li><a href="/logout" class="logout-link">Logout</a></li>
+            <% } %>
+        </ul>
+    </nav>
+
+    <h1>Welcome to Our Website!</h1>
+    <p>This is the home page content.</p>
+
+    <% if (successMessage) { %>
+        <div class="success-message"><%= successMessage %></div>
+        <% delete successMessage; %>
+    <% } else if (errorMessage) { %>
+        <div class="error-message"><%= errorMessage %></div>
+        <% delete errorMessage; %>
+    <% } %>
+</body>
+</html>
